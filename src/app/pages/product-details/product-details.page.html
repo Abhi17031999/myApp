@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ng-container *ngFor="let list of product">
+    <ion-title>{{ list.name }}</ion-title>
+  </ng-container>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ng-container *ngFor="let list of product">
+    <div class="product-details">
+        <img [src]="list.image" style="height: 338px;">
+      <h2>{{ list.name }} ({{ list.color }}, {{ list.storage }}) ({{ list.ram }})</h2>
+      <p>{{ list.ratings | number }} {{ list.reviews | number }} Reviews</p>
+      <h3>
+        <span>₹{{ list.discountedPrice }}</span>
+        <span class="original-price">₹{{ list.originalPrice }}</span>
+        <span class="discount">{{ list.discountPercentage }}% off</span>
+      </h3>
+
+      <h4>Highlights</h4>
+      <ul>
+        <li *ngFor="let offer of list.Highlights">{{ offer }}</li>
+      </ul>
+
+      <h4>Available Offers</h4>
+      <ul>
+        <li *ngFor="let offer of list.offers">{{ offer }}</li>
+      </ul>
+    </div>
+  </ng-container>
+
+</ion-content>
